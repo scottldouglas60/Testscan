@@ -24,8 +24,8 @@ struct ContentView: View {
         Button(/*@START_MENU_TOKEN@*/"Button"/*@END_MENU_TOKEN@*/) {
             parent.view.addSubview(child.view)
             parent.addChild(child)
-            //myVC.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-            //myVC.presentScanningVC()
+            myVC.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+            myVC.presentScanningVC()
             myVC.viewDidAppear(true)
         }
 

@@ -10,6 +10,8 @@ import StandardCyborgFusion
 import StandardCyborgUI
 import UIKit
 
+
+/*
 @UIApplicationMain
 class AppDelegate:UIResponder, UIApplicationDelegate{
     var window: UIWindow?
@@ -26,26 +28,22 @@ class AppDelegate:UIResponder, UIApplicationDelegate{
     
 }
 
+*/
 
 
 
-/*
 @main
-   
-    
 struct TestScanApp: App {
   var body: some Scene {
        WindowGroup {
           ContentView()
        }
-}
+   }
  
-    
 }
 
-*/
 class MyViewController: UIViewController, ScanningViewControllerDelegate {
-
+/*
     override func loadView() {
         super.loadView()
     }
@@ -74,6 +72,7 @@ class MyViewController: UIViewController, ScanningViewControllerDelegate {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
     }
+ */
     
     // @IBAction for storyboards
     func presentScanningVC() {
@@ -108,23 +107,27 @@ class MyViewController: UIViewController, ScanningViewControllerDelegate {
             presentedViewController?.dismiss(animated: false)
         }
 
-        @objc func previewSaveTapped(_ sender: UIButton) {
+        @objc private func previewSaveTapped(_ sender: UIButton) {
             // Do your thing with the scan here!
-            if  let previewVC = presentedViewController as? PointCloudPreviewViewController,
-                let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-            {
+            if let previewVC = presentedViewController as? PointCloudPreviewViewController,
+                    
+            let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+                {
                 let plyURL = documentsURL.appendingPathComponent("Scan.ply")
                 //let thumbnailURL = documentsURL.appendingPathComponent("Scan.jpeg")
                 previewVC.pointCloud?.writeToPLY(atPath: plyURL.path)
 
-              /*  if  let thumbnail = thumbnail,
+               /* if  let thumbnail = thumbnail,
                     let jpegData = thumbnail.jpegData(compressionQuality: 0.8)
                 {
                     try? jpegData.write(to: scanThumbnailURL)
                 }*/
             }
+            
+            
+            
 
-            presentedViewController?.dismiss(animated: true)
+             presentedViewController?.dismiss(animated: false)
         }
         
     
